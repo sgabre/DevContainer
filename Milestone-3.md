@@ -86,3 +86,47 @@ Après la compilation, exécute le programme dans le terminal du Dev Container :
 ```
 ./build/main
 ```
+
+# 🐞 6. Ajouter le Débogage (launch.json)
+
+Pour déboguer le code en mode pas à pas, configure .vscode/launch.json :
+
+📄 Créer/modifier .vscode/launch.json
+
+```
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug C Program in Dev Container",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/my_program",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ],
+      "preLaunchTask": "CMake Build",
+      "miDebuggerPath": "/usr/bin/gdb"
+    }
+  ]
+}
+```
+
+## ➤ Déboguer dans VS Code
+
+Place un point d’arrêt (F9) dans main.c.
+Ouvre Run and Debug (Ctrl + Maj + D).
+Sélectionne "Debug C Program in Dev Container".
+Clique sur ▶ Lancer (F5).
+
+✅ Le programme démarre en mode débogage avec GDB dans le Dev Container ! 🎯
