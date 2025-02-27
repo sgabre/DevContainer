@@ -1,6 +1,8 @@
 # Milestone #2:  Ajouter CMake
 
-# 📄 CMakeLists.txt
+# 🏗 Étape 1 : Création d'un CMakeLists
+
+📄 CMakeLists.txt
 
 ```
 cmake_minimum_required(VERSION 3.10)
