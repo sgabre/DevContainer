@@ -1,4 +1,4 @@
-Voici un tutoriel pour configurer un Dev Container en C avec Visual Studio Code et Docker. Ce container sera basé sur Ubuntu et inclura GCC, GDB et Make pour le développement en C.
+Voici un tutoriel pour configurer un Dev Container en C avec Visual Studio Code et Docker. 
 
 # 📌 Prérequis
 
