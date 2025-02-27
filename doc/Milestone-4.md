@@ -16,25 +16,35 @@ Ajoute les outils STM32 dans .devcontainer/Dockerfile :
 📄 Modifier .devcontainer/Dockerfile
 
 # Utiliser une image de base minimale
+
+```
 FROM ubuntu:22.04
+```
 
 # Installer les outils de développement et la toolchain STM32
+```
 RUN apt-get update && apt-get install -y \
     cmake make ninja-build gdb-arm-none-eabi openocd \
     gcc-arm-none-eabi binutils-arm-none-eabi libnewlib-arm-none-eabi
+    ```
 
 # Nettoyer pour réduire la taille de l'image
+```
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+```
 Après modification, reconstruis le container :
 
 Ctrl + Shift + P → "Dev Containers: Rebuild and Reopen in Container"
+
 🔧 2. Vérifier que la toolchain est bien installée
 
 Dans le terminal du Dev Container (`Ctrl + ``), tape :
 
+```
 arm-none-eabi-gcc --version
 arm-none-eabi-gdb --version
 openocd --version
+```
 Si les commandes renvoient une version, l’installation est OK ✅.
 
 📄 3. Configurer CMakeLists.txt pour STM32
@@ -43,6 +53,7 @@ Ajoute un CMakeLists.txt compatible STM32 :
 
 📄 Créer/modifier CMakeLists.txt
 
+```
 cmake_minimum_required(VERSION 3.10)
 project(STM32Project C ASM)
 
@@ -60,7 +71,10 @@ set(CMAKE_C_FLAGS "-mcpu=cortex-m4 -mthumb -O2 -ffunction-sections -fdata-sectio
 set(CMAKE_EXE_LINKER_FLAGS "-Wl,--gc-sections" CACHE STRING "" FORCE)
 
 # Ajouter l'exécutable
+
 add_executable(stm32_app main.c)
+```
+
 Cela permet d’utiliser GCC ARM Embedded pour compiler du code STM32.
 
 🔨 4. Compiler le projet STM32
@@ -72,8 +86,10 @@ Tape : CMake: Configure.
 Ensuite, exécute CMake: Build.
 Ou en ligne de commande :
 
+```
 cmake -B build
 cmake --build build
+```
 Si tout est bien configuré, tu obtiendras un exécutable .elf.
 
 🐞 5. Déboguer avec OpenOCD et GDB
@@ -82,6 +98,7 @@ Ajoute cette configuration dans .vscode/launch.json :
 
 📄 Créer/modifier .vscode/launch.json
 
+```
 {
   "version": "0.2.0",
   "configurations": [
@@ -108,16 +125,23 @@ Ajoute cette configuration dans .vscode/launch.json :
     }
   ]
 }
+```
 Cela permet d’utiliser OpenOCD pour flasher et déboguer le STM32 directement dans le Dev Container.
 
 🔌 6. Flasher le microcontrôleur STM32
 
 Démarre OpenOCD dans le terminal du Dev Container :
 
+```
 openocd -f interface/stlink.cfg -f target/stm32f4x.cfg
+```
+
 Puis, flashe le programme avec GDB :
 
+```
 arm-none-eabi-gdb build/stm32_app.elf
+```
+
 Dans GDB, tape :
 
 target remote localhost:3333
