@@ -1,92 +1,135 @@
-# Milestone #1: Dev Container de base
+# 🚀 Milestone 5 : Configuration de la Toolchain STM32 dans le Dev Container
 
-# 📌 Prérequis
+Dans cette étape, nous allons configurer la toolchain STM32 dans un Dev Container pour pouvoir compiler, lier et flasher un programme sur un microcontrôleur STM32 directement depuis VS Code.
 
-1. Installer Docker : Docker Desktop
-2. Installer Visual Studio Code : VS Code
-3. Installer l’extension Dev Containers :
-   * Ouvrir VS Code
-   * Aller dans l’onglet Extensions (Ctrl + Shift + X)
-   * Rechercher Dev Containers et l’installer
+# 🎯 Objectifs
 
-# 🏗 Étape 1 : Création du projet
+Installer GCC ARM Embedded Toolchain dans le Dev Container.
+Ajouter OpenOCD pour le debug et le flashage.
+Configurer CMake pour utiliser la toolchain STM32.
+Compiler et déboguer un programme STM32 dans le Dev Container.
 
-Dans un terminal, crée un dossier pour ton projet :
+# 🛠️ 1. Modifier le Dockerfile du Dev Container
+
+Ajoute les outils STM32 dans .devcontainer/Dockerfile :
+
+📄 Modifier .devcontainer/Dockerfile
+
+# Utiliser une image de base minimale
+FROM ubuntu:22.04
+
+# Installer les outils de développement et la toolchain STM32
+RUN apt-get update && apt-get install -y \
+    cmake make ninja-build gdb-arm-none-eabi openocd \
+    gcc-arm-none-eabi binutils-arm-none-eabi libnewlib-arm-none-eabi
+
+# Nettoyer pour réduire la taille de l'image
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+Après modification, reconstruis le container :
+
+Ctrl + Shift + P → "Dev Containers: Rebuild and Reopen in Container"
+🔧 2. Vérifier que la toolchain est bien installée
+
+Dans le terminal du Dev Container (`Ctrl + ``), tape :
+
+arm-none-eabi-gcc --version
+arm-none-eabi-gdb --version
+openocd --version
+Si les commandes renvoient une version, l’installation est OK ✅.
+
+📄 3. Configurer CMakeLists.txt pour STM32
+
+Ajoute un CMakeLists.txt compatible STM32 :
+
+📄 Créer/modifier CMakeLists.txt
+
+cmake_minimum_required(VERSION 3.10)
+project(STM32Project C ASM)
+
+set(CMAKE_SYSTEM_NAME Generic)
+set(CMAKE_SYSTEM_PROCESSOR arm)
+
+# Définir la toolchain STM32
+set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
+set(CMAKE_C_COMPILER arm-none-eabi-gcc)
+set(CMAKE_CXX_COMPILER arm-none-eabi-g++)
+set(CMAKE_ASM_COMPILER arm-none-eabi-gcc)
+
+# Options de compilation
+set(CMAKE_C_FLAGS "-mcpu=cortex-m4 -mthumb -O2 -ffunction-sections -fdata-sections" CACHE STRING "" FORCE)
+set(CMAKE_EXE_LINKER_FLAGS "-Wl,--gc-sections" CACHE STRING "" FORCE)
+
+# Ajouter l'exécutable
+add_executable(stm32_app main.c)
+Cela permet d’utiliser GCC ARM Embedded pour compiler du code STM32.
+
+🔨 4. Compiler le projet STM32
+
+Dans VS Code :
+
+Ouvre la palette de commande (Ctrl + Shift + P).
+Tape : CMake: Configure.
+Ensuite, exécute CMake: Build.
+Ou en ligne de commande :
+
+cmake -B build
+cmake --build build
+Si tout est bien configuré, tu obtiendras un exécutable .elf.
+
+🐞 5. Déboguer avec OpenOCD et GDB
+
+Ajoute cette configuration dans .vscode/launch.json :
+
+📄 Créer/modifier .vscode/launch.json
+
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug STM32",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/stm32_app.elf",
+      "cwd": "${workspaceFolder}",
+      "MIMode": "gdb",
+      "miDebuggerPath": "/usr/bin/arm-none-eabi-gdb",
+      "setupCommands": [
+        {
+          "description": "Se connecter à OpenOCD",
+          "text": "target remote localhost:3333",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Charger le programme",
+          "text": "load",
+          "ignoreFailures": true
+        }
+      ]
+    }
+  ]
+}
+Cela permet d’utiliser OpenOCD pour flasher et déboguer le STM32 directement dans le Dev Container.
+
+🔌 6. Flasher le microcontrôleur STM32
+
+Démarre OpenOCD dans le terminal du Dev Container :
+
+openocd -f interface/stlink.cfg -f target/stm32f4x.cfg
+Puis, flashe le programme avec GDB :
+
+arm-none-eabi-gdb build/stm32_app.elf
+Dans GDB, tape :
+
+target remote localhost:3333
+load
+continue
+Le programme est maintenant exécuté sur le STM32 🎯.
+
+
+
 
 ```
 mkdir DevContainer
 cd DevContainer
 ```
 
-Ajoute un fichier source simple :
-
-```
-mkdir src
-echo '#include <stdio.h>\nint main() { printf("Hello, Dev Container!\\n"); return 0; }' > src/main.c
-```
-
-# 🛠 Étape 3 : Création du Dev Container
-
-Dans le dossier DevContainer, crée un sous-dossier .devcontainer :
-
-```
-mkdir .devcontainer
-```
-
-Crée ensuite un fichier Dockerfile dans .devcontainer/ :
-```
-# Image Alpine minimale
-FROM alpine:latest
-
-# Installer uniquement les outils nécessaires
-RUN apk add --no-cache gcc musl-dev make gdb
-
-# Définir le dossier de travail
-WORKDIR /workspace
-
-# Commande par défaut
-CMD ["/bin/sh"]
-
-```
-Crée ensuite un fichier devcontainer.json dans .devcontainer/ :
-
-```
-{
-  "name": "Minimal C Dev Container",
-  "build": {
-    "dockerfile": "Dockerfile"
-  },
-  "customizations": {
-    "vscode": {
-      "extensions": ["ms-vscode.cpptools"]
-    }
-  },
-  "workspaceFolder": "/workspace",
-  "mounts": [
-    "source=${localWorkspaceFolder}/src,target=/workspace,type=bind"
-  ],
-  "runArgs": ["--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined"]
-}
-```
-
-# 📦 Étape 4 : Lancer le Dev Container
-
-Ouvre le dossier DevContainer dans VS Code.
-Appuie sur Ctrl + Shift + P et cherche Dev Containers: Reopen in Container.
-VS Code va construire et ouvrir le container.
-
-# 🔧 Étape 5 : Compiler et Exécuter le code
-
-Dans le terminal de VS Code (ou via bash dans le container) :
-
-```
-cd /workspace
-gcc main.c -o main
-./main
-```
-
-Tu devrais voir :
-
-```
-Hello, Dev Container!
-```
