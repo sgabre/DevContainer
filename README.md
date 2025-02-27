@@ -2,7 +2,7 @@ Voici un tutoriel pour configurer un Dev Container en C avec Visual Studio Code 
 
 | Milestone     | Description            |
 |----------------------------------------|------------------------|
-| [Milestone #1(./Milestone-1.md)  | Dev Container de base  |
+| [Milestone #1](./Milestone-1.md)  | Dev Container de base  |
 
 # 📌 Prérequis
 
