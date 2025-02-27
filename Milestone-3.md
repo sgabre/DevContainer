@@ -2,7 +2,7 @@
 
 # 🎯 Objectif
 
-Configurer VS Code pour compiler et exécuter un projet C dans le Dev Container en utilisant CMake et Make/Ninja.
+Configurer VS Code pour compiler et exécuter un projet C dans le Dev Container en utilisant CMake et Make.
 
 
 # 🛠️ 1. Vérifier que CMake et Make sont installés dans le Dev Container
@@ -19,7 +19,7 @@ Si une des commandes est introuvable, ajoute ces paquets dans le Dockerfile du D
 📄 Modifier .devcontainer/Dockerfile
 
 ```
-RUN apt-get update && apt-get install -y cmake make ninja-build gdb
+RUN apt-get update && apt-get install -y cmake make gdb
 ```
 
 Puis recharge le container :
