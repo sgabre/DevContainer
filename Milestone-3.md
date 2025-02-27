@@ -66,3 +66,16 @@ Tape : CMake: Configure.
 Sélectionne "Unix Makefiles" comme générateur.
 
 Vérifie que les fichiers de build sont créés dans le dossier build/.
+
+# 🔨 5. Compiler et Exécuter depuis VS Code
+
+➤ Compiler avec CMake Tools
+
+Ouvre la palette de commande (Ctrl + Shift + P).
+Tape CMake: Build et exécute la commande.
+
+Ou dans le terminal :
+
+```
+cmake --build build
+```
