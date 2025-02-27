@@ -69,7 +69,7 @@ Vérifie que les fichiers de build sont créés dans le dossier build/.
 
 # 🔨 5. Compiler et Exécuter depuis VS Code
 
-➤ Compiler avec CMake Tools
+## ➤ Compiler avec CMake Tools
 
 Ouvre la palette de commande (Ctrl + Shift + P).
 Tape CMake: Build et exécute la commande.
@@ -78,4 +78,11 @@ Ou dans le terminal :
 
 ```
 cmake --build build
+```
+
+## ➤ Exécuter le programme
+Après la compilation, exécute le programme dans le terminal du Dev Container :
+
+```
+./build/main
 ```
