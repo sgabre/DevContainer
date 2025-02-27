@@ -31,7 +31,7 @@ WORKDIR /workspace
 CMD ["/bin/sh"]
 ```
 
-# 🏗 Étape 3 : Mise à jour du devcontainer
+# 🛠 Étape 3 : Mise à jour du devcontainer
 
 📄 .devcontainer/devcontainer.json (mise à jour)
 
