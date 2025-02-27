@@ -34,8 +34,35 @@ Ajoute ce fichier pour que VS Code reconnaisse CMake :
 
 📄 Créer ou modifier .vscode/settings.json
 
+```
 {
     "cmake.configureOnOpen": true,
     "cmake.generator": "Unix Makefiles",
     "cmake.buildDirectory": "${workspaceFolder}/build"
 }
+```
+
+# 🔧 3. Configurer CMakeLists.txt
+
+📄 Créer/modifier CMakeLists.txt à la racine du projet
+
+```
+cmake_minimum_required(VERSION 3.10)
+project(MyProject C)
+
+set(CMAKE_C_STANDARD 99)
+
+add_executable(my_program main.c)
+```
+
+# 🏗️ 4. Générer le projet avec CMake
+
+Dans VS Code :
+
+Ouvre la palette de commande (Ctrl + Shift + P).
+
+Tape : CMake: Configure.
+
+Sélectionne "Unix Makefiles" comme générateur.
+
+Vérifie que les fichiers de build sont créés dans le dossier build/.
