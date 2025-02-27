@@ -27,3 +27,15 @@ Puis recharge le container :
 ```
 Ctrl + Shift + P → "Dev Containers: Rebuild and Reopen in Container"
 ```
+
+# 📄 2. Configurer .vscode/settings.json
+
+Ajoute ce fichier pour que VS Code reconnaisse CMake :
+
+📄 Créer ou modifier .vscode/settings.json
+
+{
+    "cmake.configureOnOpen": true,
+    "cmake.generator": "Unix Makefiles",
+    "cmake.buildDirectory": "${workspaceFolder}/build"
+}
