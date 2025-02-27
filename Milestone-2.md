@@ -1,4 +1,4 @@
-# Milestone #2
+# Milestone #2:  Ajouter CMake
 
 🏗 Milestone 2 : Ajout de CMake
 
