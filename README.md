@@ -14,8 +14,8 @@ Voici un tutoriel pour configurer un Dev Container en C avec Visual Studio Code 
 Dans un terminal, crée un dossier pour ton projet :
 
 ```
-mkdir devcontainer-c
-cd devcontainer-c
+mkdir DevContainer
+cd DevContainer
 ```
 
 Ajoute un fichier source simple :
@@ -27,7 +27,7 @@ echo '#include <stdio.h>\nint main() { printf("Hello, Dev Container!\\n"); retur
 
 # 🛠 Étape 3 : Création du Dev Container
 
-Dans le dossier devcontainer-c, crée un sous-dossier .devcontainer :
+Dans le dossier DevContainer, crée un sous-dossier .devcontainer :
 
 ```
 mkdir .devcontainer
@@ -71,7 +71,7 @@ Crée ensuite un fichier devcontainer.json dans .devcontainer/ :
 
 # 📦 Étape 4 : Lancer le Dev Container
 
-Ouvre le dossier devcontainer-c dans VS Code.
+Ouvre le dossier DevContainer dans VS Code.
 Appuie sur Ctrl + Shift + P et cherche Dev Containers: Reopen in Container.
 VS Code va construire et ouvrir le container.
 
