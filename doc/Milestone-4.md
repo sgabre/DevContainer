@@ -15,23 +15,23 @@ Ajoute les outils STM32 dans .devcontainer/Dockerfile :
 
 📄 Modifier .devcontainer/Dockerfile
 
-# Utiliser une image de base minimale
-
-```
-FROM ubuntu:22.04
-```
-
 # Installer les outils de développement et la toolchain STM32
-```
-RUN apt-get update && apt-get install -y \
-    cmake make ninja-build gdb-arm-none-eabi openocd \
-    gcc-arm-none-eabi binutils-arm-none-eabi libnewlib-arm-none-eabi
-    ```
 
-# Nettoyer pour réduire la taille de l'image
 ```
-RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+# Utiliser Alpine comme base
+FROM alpine:latest
+
+# Installer les dépendances
+RUN apk add --no-cache \
+    cmake make ninja g++ gcc musl-dev \
+    arm-none-eabi-gcc arm-none-eabi-binutils arm-none-eabi-newlib \
+    gdb-multiarch openocd bash
+
+# Définir Ninja comme générateur par défaut pour CMake
+ENV CMAKE_GENERATOR=Ninja
 ```
+
+
 Après modification, reconstruis le container :
 
 Ctrl + Shift + P → "Dev Containers: Rebuild and Reopen in Container"
