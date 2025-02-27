@@ -13,7 +13,9 @@ set(CMAKE_C_STANDARD 99)
 add_executable(main src/main.c)
 ```
 
-# 📄 .devcontainer/Dockerfile (mise à jour)
+# 🏗 Étape 2 : Mise à jour du Dockerfile
+
+📄 .devcontainer/Dockerfile (mise à jour)
 
 ```
 # Image Alpine minimale
