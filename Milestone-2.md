@@ -13,7 +13,7 @@ set(CMAKE_C_STANDARD 99)
 add_executable(main src/main.c)
 ```
 
-# 🏗 Étape 2 : Mise à jour du Dockerfile
+# 🛠 Étape 2 : Mise à jour du Dev Container
 
 📄 .devcontainer/Dockerfile (mise à jour)
 
@@ -30,8 +30,6 @@ WORKDIR /workspace
 # Commande par défaut
 CMD ["/bin/sh"]
 ```
-
-# 🛠 Étape 3 : Mise à jour du devcontainer
 
 📄 .devcontainer/devcontainer.json (mise à jour)
 
