@@ -1,17 +1,19 @@
 # Milestone #2:  Ajouter CMake
 
-🏗 Milestone 2 : Ajout de CMake
+# 📄 CMakeLists.txt
 
-📄 CMakeLists.txt
-
+```
 cmake_minimum_required(VERSION 3.10)
 project(MyCProject C)
 
 set(CMAKE_C_STANDARD 99)
 
 add_executable(main src/main.c)
-📄 .devcontainer/Dockerfile (mise à jour)
+```
 
+# 📄 .devcontainer/Dockerfile (mise à jour)
+
+```
 # Image Alpine minimale
 FROM alpine:latest
 
@@ -23,8 +25,11 @@ WORKDIR /workspace
 
 # Commande par défaut
 CMD ["/bin/sh"]
-📄 .devcontainer/devcontainer.json (mise à jour)
+```
 
+# 📄 .devcontainer/devcontainer.json (mise à jour)
+
+```
 {
   "name": "C Dev Container with CMake",
   "build": {
@@ -39,15 +44,21 @@ CMD ["/bin/sh"]
     }
   }
 }
-🔹 Compiler avec CMake
+```
+
+# 🔹 Compiler avec CMake
+
 Dans le terminal du container :
 
+```
 mkdir build
 cd build
 cmake ..
 make
 ./main
-✅ Sortie attendue :
+```
+
+# ✅ Sortie attendue :
 
 Hello, Dev Container!
 
