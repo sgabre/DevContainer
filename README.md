@@ -1,5 +1,9 @@
 Voici un tutoriel pour configurer un Dev Container en C avec Visual Studio Code et Docker. 
 
+| Milestone     | Description            |
+|---------------|------------------------|
+| Milestone #1  | Dev Container de base  |
+
 # 📌 Prérequis
 
 1. Installer Docker : Docker Desktop
