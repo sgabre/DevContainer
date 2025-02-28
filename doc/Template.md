@@ -11,8 +11,13 @@
 # Verification 
 
 (ligne de command)
+
 (script bash,...)
 
 # Utilisation 
 
-Pour Compiler ...
+Action: lancer l'application sur cible, ...
+
+Action: lancer les test unitaire sur cible, ...
+
+
