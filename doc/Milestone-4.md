@@ -4,10 +4,10 @@ Dans cette étape, nous allons configurer la toolchain STM32 dans un Dev Contain
 
 # 🎯 Objectifs
 
-Installer GCC ARM Embedded Toolchain dans le Dev Container.
-Ajouter OpenOCD pour le debug et le flashage.
-Configurer CMake pour utiliser la toolchain STM32.
-Compiler et déboguer un programme STM32 dans le Dev Container.
+- Installer GCC ARM Embedded Toolchain dans le Dev Container.
+- Ajouter OpenOCD pour le debug et le flashage.
+- Configurer CMake pour utiliser la toolchain STM32.
+- Compiler et déboguer un programme STM32 dans le Dev Container.
 
 # 🛠️ 1. Modifier le Dockerfile du Dev Container
 
