@@ -4,6 +4,11 @@
 
 Configurer VS Code pour compiler et exécuter un projet C dans le Dev Container en utilisant CMake et Make.
 
+# Prérequis
+
+- Avoir un Dev Container configuré.
+- Avoir CMake et Make installés dans le Dev Container.
+- Lancer VS Code avec l'extension Dev Containers.
 
 # 🛠️ 1. Vérifier que CMake et Make sont installés dans le Dev Container
 
