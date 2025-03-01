@@ -25,8 +25,15 @@ How the software shall respond to anticipated system errors or use errors.>>
 
 Interfaces
 
-<<It describes links between the software system and the other system>>
+<< .It describes links between the software system and the other system>>
 
+Inputs/Outputs
+
+<< If the requirement is simple and input/output are limited, this information could be combined in the previous section and this section can be dropped. >>
+A table can be use 
+
+| Name | Description | Characteristics | Range/Limits | Default |
+|------|-------------|-----------------|--------------|---------|
 
 
 # Format d'un requirement
