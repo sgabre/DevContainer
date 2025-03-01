@@ -3,6 +3,14 @@
 
 ChatGPT Operator avec ?? pour relire et ameliore Software Requirement Specification
 
+# structure du document
+
+Architecture Snapshot
+
+<<It shall give an overview about the sub-system impacted by this documentation and should be have a reference to the architecture document, using the same denomination.>>
+
+
+
 # Format d'un requirement
 
 [ES-XXX-SRS-0002] Requirement title 2
