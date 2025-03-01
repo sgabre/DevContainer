@@ -9,6 +9,13 @@ Architecture Snapshot
 
 <<It shall give an overview about the sub-system impacted by this documentation and should be have a reference to the architecture document, using the same denomination.>>
 
+Functional Requirements
+
+<<List the functional requirements associated sort by this feature.
+The requirements that are Risk Control Measures should be specifically identified.
+Include error handling requirements: how the software shall respond to anticipated system errors or use errors.>>
+
+
 
 
 # Format d'un requirement
