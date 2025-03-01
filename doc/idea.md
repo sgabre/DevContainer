@@ -11,7 +11,7 @@ Architecture Snapshot
 
 Functional Requirements
 
-<<List the functional requirements associated sort by this feature.
+<<. List the functional requirements associated sort by this feature.
 The requirements that are Risk Control Measures should be specifically identified.
 Include error handling requirements: how the software shall respond to anticipated system errors or use errors.>>
 
