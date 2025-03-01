@@ -15,6 +15,17 @@ Functional Requirements
 The requirements that are Risk Control Measures should be specifically identified.
 Include error handling requirements: how the software shall respond to anticipated system errors or use errors.>>
 
+Operational Requirements
+
+Interaction
+
+<< It describes alarm, warning and operator message sequences driven by the software system.
+It describes user action/system response.
+How the software shall respond to anticipated system errors or use errors.>>
+
+Interfaces
+
+<<It describes links between the software system and the other system>>
 
 
 
