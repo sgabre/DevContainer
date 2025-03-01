@@ -5,7 +5,11 @@ ChatGPT Operator avec ?? pour relire et ameliore Software Requirement Specificat
 
 # Format d'un requirement
 
+[ES-XXX-SRS-0002] Requirement title 2
 
+The software shall respond to user commands within 0.005 seconds, measured from the moment the command is received by software to the moment the consequent action (e.g. motor control action) is activated. This excludes the hardware delays that are quantified in the hardware spec.  This responsiveness is required to fulfill the system requirement of <TBD>.
+
+ [REF HFN-XXX-DIE-0002] [STATUS ACTIVE] [REV 02]
 
 # Critere d'evaluation d'un requirement
 
