@@ -15,11 +15,11 @@ ChatGPT Operator avec ?? pour relire et ameliore Software Requirement Specificat
 | Complete| 	The requirement is fully stated in one place with no missing information.| 
 | Consistent| 	The requirement does not contradict any other requirement and is fully consistent with all authoritative external documentation.| 
 | Non-Conjugated (Atomic)| 	The requirement is atomic, i.e., it does not contain conjunctions. E.g., "The postal code field must validate American and Canadian postal codes" should be written as two separate requirements: (1) "The postal code field must validate American postal codes" and (2) "The postal code field must validate Canadian postal codes". | 
-| Traceable| 	The requirement meets all or part of a business need as stated by stakeholders and authoritatively documented.
-Current	The requirement has not been made obsolete by the passage of time. | 
+| Traceable| 	The requirement meets all or part of a business need as stated by stakeholders and authoritatively documented.| 
+| Current	| The requirement has not been made obsolete by the passage of time. | 
 | Unambiguous| 	The requirement is concisely stated without recourse to technical jargon, acronyms (unless defined elsewhere in the Requirements document), or other esoteric verbiage. It expresses objective facts, not subjective opinions. It is subject to one and only one interpretation. Vague subjects, adjectives, prepositions, verbs and subjective phrases are avoided. Negative statements and compound statements are avoided. | 
 | Specify Importance	| Many requirements represent a stakeholder-defined characteristic the absence of which will result in a major or even fatal deficiency. Others represent features that may be implemented if time and budget permits. The requirement must specify a level of importance.| 
-| Verifiable	The implementation of the requirement can be determined through basic possible methods: inspection, demonstration, test (instrumented) or analysis (to include validated modeling & simulation).| 
+| Verifiable	| The implementation of the requirement can be determined through basic possible methods: inspection, demonstration, test (instrumented) or analysis (to include validated modeling & simulation).| 
 
 # Tips
 
